@@ -1,0 +1,31 @@
+.logo {
+    max-width: 150px;
+    height: auto;
+}
+.section {
+    padding: 40px 0;
+    border-bottom: 1px solid #eee;
+}
+.social-icon {
+    font-size: 24px;
+    margin: 0 10px;
+}
+.contact-info-item {
+    margin: 15px 0;
+}
+
+/* Add some animation */
+#abuDhabiClock {
+    text-shadow: 0 0 10px rgba(0,123,255,0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+.Adclk{
+    color: aqua;
+}

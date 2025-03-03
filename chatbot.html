@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f4f4f4; }
+        .chat-container { width: 300px; background: white; padding: 20px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); border-radius: 8px; }
+        .chat-box { height: 300px; overflow-y: auto; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .input-container { display: flex; margin-top: 10px; }
+        input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        button { padding: 10px; background: blue; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .message { margin: 5px 0; padding: 8px; border-radius: 5px; }
+        .user { background: #dcf8c6; align-self: flex-end; }
+        .bot { background: #ececec; }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box"></div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    
+    <script>
+        const responses = {
+            "hello": "Hi there! How can I help you?",
+            "how are you": "I'm just a bot, but I'm doing fine! How about you?",
+            "services": "We offer visa services and documentation support.",
+            "bye": "Goodbye! Have a great day!",
+            "default": "I'm not sure how to respond to that."
+        };
+
+        function sendMessage() {
+            const inputField = document.getElementById("user-input");
+            const message = inputField.value.trim().toLowerCase();
+            if (message === "") return;
+
+            appendMessage(message, "user");
+            inputField.value = "";
+
+            setTimeout(() => {
+                const response = responses[message] || responses["default"];
+                appendMessage(response, "bot");
+            }, 500);
+        }
+
+        function appendMessage(text, sender) {
+            const chatBox = document.getElementById("chat-box");
+            const messageElement = document.createElement("div");
+            messageElement.classList.add("message", sender);
+            messageElement.textContent = text;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+</body>
+</html>

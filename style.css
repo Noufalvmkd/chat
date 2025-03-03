@@ -1,19 +1,101 @@
+
+*{
+    margin: 0 5px;
+}
+
+body{
+    border: 7px solid rgba(30,85,77,255);
+
+}
+/*loader*/
+/* Center the loader */
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 100px;
+    height: 100px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid rgba(30,85,77,255);
+    border-radius: 50%;
+    border-top: 16px solid hsl(44, 70%, 53%);
+    border-bottom: 16px solid rgb(29, 29, 31);
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Add animation to "page content" */
+  .animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+  }
+  
+  @-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+  }
+  
+  @keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+  }
+  
+  #myDiv {
+    display: none;
+    text-align: center;
+  }
+
 .logo {
     max-width: 150px;
     height: auto;
+    border-radius: 10px;
 }
 .section {
     padding: 40px 0;
     border-bottom: 1px solid #eee;
 }
 .social-icon {
-    font-size: 24px;
+    font-size: 20px;
     margin: 0 10px;
+    border-radius: 50px;
 }
 .contact-info-item {
     margin: 15px 0;
 }
+/* navbar color*/
 
+.mainColor{
+    background-color: rgba(30,85,77,255);
+}
+
+/* 
+section date*/
+.dateBox{
+    background-color: #fdcb00;
+    border-radius: 10px;
+    
+}
+
+/*welcome */
+.welcome1{
+font-family: sans-serif;
+font-weight: bold;
+color: #10ec90;
+}
 /* Add some animation */
 #abuDhabiClock {
     text-shadow: 0 0 10px rgba(0,123,255,0.3);
@@ -29,3 +111,228 @@
 .Adclk{
     color: aqua;
 }
+/*STATUS*/
+#business-status {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center;
+    width: 150px; /* Adjust width */
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Colors for Open/Closed/Break */
+.open {
+    background-color: green;
+}
+.closed {
+    background-color: red;
+}
+.break {
+    background-color: orange;
+}
+
+/* Animation Effect */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Apply animation when business is open */
+.open {
+    animation: pulse 1s infinite;
+}
+
+/* Centering inside a container */
+.status-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.business-hours-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.business-hours-container h5 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.business-hours-container p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.business-hours-container strong {
+    font-size: 17px;
+    color: #007bff;
+}
+
+.business-hours-container br {
+    display: block;
+    margin: 5px 0;
+}
+
+.badge {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.badge.open {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge.closed {
+    background-color: #dc3545;
+    color: white;
+}
+
+.badge.break {
+    background-color: #ffc107;
+    color: black;
+}
+
+/* Styling for the toggle switch */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#ramadan-toggle {
+    width: 50px;
+    height: 24px;
+    appearance: none;
+    background: #ccc;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#ramadan-toggle:checked {
+    background: #007bff;
+}
+
+#ramadan-toggle::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: 0.3s;
+}
+
+#ramadan-toggle:checked::before {
+    left: 28px;
+}
+
+#toggle-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+/* Business Hours Container */
+.business-hours-container {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Accordion */
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.accordion-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.accordion-button {
+    width: 100%;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.accordion-button:hover {
+    background: #0056b3;
+}
+
+.accordion-content {
+    display: none;
+    padding: 10px;
+    background: white;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Show content when active */
+.accordion-item.active .accordion-content {
+    display: block;
+}
+
+/* Status Badge */
+.badge {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.badge.open {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge.closed {
+    background-color: #dc3545;
+    color: white;
+}
+
+.badge.break {
+    background-color: #ffc107;
+    color: black;
+}
+

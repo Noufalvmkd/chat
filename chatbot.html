@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -56,6 +56,93 @@
             chatBox.appendChild(messageElement);
             chatBox.scrollTop = chatBox.scrollHeight;
         }
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f4f4f4; }
+        .chat-container { width: 300px; background: white; padding: 20px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); border-radius: 8px; }
+        .chat-box { height: 300px; overflow-y: auto; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .input-container { display: flex; margin-top: 10px; }
+        input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        button { padding: 10px; background: blue; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .message { margin: 5px 0; padding: 8px; border-radius: 5px; }
+        .user { background: #dcf8c6; align-self: flex-end; }
+        .bot { background: #ececec; }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box"></div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type a number...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    
+    <script>
+        const services = {
+            "1": { name: "Visa Services", options: { "1": "New Visa", "2": "Visa Renewal" } },
+            "2": { name: "Documentation Services", options: { "1": "Translation", "2": "Attestation" } }
+        };
+        
+        let currentService = null;
+
+        function sendMessage() {
+            const inputField = document.getElementById("user-input");
+            const message = inputField.value.trim();
+            if (message === "") return;
+
+            appendMessage(message, "user");
+            inputField.value = "";
+
+            setTimeout(() => {
+                handleResponse(message);
+            }, 500);
+        }
+
+        function handleResponse(message) {
+            if (!currentService) {
+                if (services[message]) {
+                    currentService = message;
+                    let optionsText = `You selected ${services[message].name}.\nChoose an option:\n`;
+                    for (const key in services[message].options) {
+                        optionsText += `${key}: ${services[message].options[key]}\n`;
+                    }
+                    appendMessage(optionsText, "bot");
+                } else {
+                    appendMessage("What service do you need?\n1: Visa Services\n2: Documentation Services", "bot");
+                }
+            } else {
+                if (services[currentService].options[message]) {
+                    appendMessage(`You selected ${services[currentService].options[message]}. How can I assist you further?`, "bot");
+                } else {
+                    appendMessage("Invalid option. Please choose again.", "bot");
+                }
+            }
+        }
+
+        function appendMessage(text, sender) {
+            const chatBox = document.getElementById("chat-box");
+            const messageElement = document.createElement("div");
+            messageElement.classList.add("message", sender);
+            messageElement.textContent = text;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                appendMessage("What service do you need?\n1: Visa Services\n2: Documentation Services", "bot");
+            }, 500);
+        });
     </script>
 </body>
 </html>
